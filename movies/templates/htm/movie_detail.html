@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <style>
+        .movie-container {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.movie-container p {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.movie-container a {
+    display: inline-block;
+    background: #dc3545;
+    color: white;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.movie-container a:hover {
+    background: #c82333;
+}
+
+/* 📱 Адаптивность для мобильных */
+@media (max-width: 600px) {
+    .movie-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .movie-container p {
+        font-size: 16px;
+    }
+
+    .movie-container a {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+.back-button {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+    background: #f8f9fa;
+    padding: 10px 16px;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    border: 2px solid #007bff;
+}
+
+.back-button:hover {
+    background: #007bff;
+    color: white;
+    transform: scale(1.1);
+}Get-ChildItem -Recurse -Filter requirements.txt
+
+    </style>
+</head>
+<body>
+<a href="{% url 'movie_list' %}" class="back-button"> &lt; </a>
+
+<div class="movie-container">
+    {% if movie %}
+        <p><strong>Название:</strong> {{ movie.title }}</p>
+        <p><strong>Описание:</strong> {{ movie.description }}</p>
+        <a href="{% url 'movie_delete' movie.id %}">Удалить</a>
+    {% else %}
+        <p>Пользователь не найден.</p>
+    {% endif %}
+</div>
+</body>
+</html>

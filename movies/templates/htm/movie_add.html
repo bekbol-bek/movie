@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+       /* Основные стили формы */
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 25px;
+    background: linear-gradient(135deg, #ffffff, #f3f3f3);
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Эффект при наведении */
+form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для полей ввода */
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    background: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Эффект при фокусе */
+input:focus, textarea:focus, select:focus {
+    border-color: #007bff;
+    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Кнопка */
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Эффект нажатия */
+button:active {
+    transform: scale(0.98);
+}
+
+/* Эффект при наведении */
+button:hover {
+    background: linear-gradient(135deg, #0056b3, #003f7f);
+}
+
+.back-button {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+    background: #f8f9fa;
+    padding: 10px 16px;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    border: 2px solid #007bff;
+}
+
+.back-button:hover {
+    background: #007bff;
+    color: white;
+    transform: scale(1.1);
+}
+
+
+
+
+/* Мобильная адаптация */
+@media (max-width: 480px) {
+    form {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    input, textarea, select, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+</style>
+</head>
+<body>
+<a href="{% url 'movie_list' %}" class="back-button"> &lt; </a>
+<form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+</body>
+</html>
